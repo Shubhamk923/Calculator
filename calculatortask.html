@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing:border-box ;
+        }
+
+        body{
+            /* border: 2px solid red; */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items:center ;
+            background-color: black;
+        }
+
+        section{
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 300px;
+            height: 480px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        section input{
+            border: 2px solid silver;
+            width: 100%;
+            height: 50px;
+        }
+
+        input.displaydiv{
+            background-color: silver;
+            border-radius: 5px;
+        }
+
+        section table input{
+            /* border: 2px solid red; */
+            width: 72px;
+            height: 80px;
+            padding: 30px 0;
+            
+        }
+
+        .buttondiv{
+            background-color: black;
+            color: white;
+            font-size: 20px;
+        }
+
+        .equaldiv{
+              height: 170px;
+              background-color: rgba(255,0,0,0.8);
+            color: white;
+            font-size: 20px;
+        }
+
+    section table input:hover{
+        background-color: bisque;
+    }
+
+    .orangediv{
+        background-color: orange;
+        font-size: 20px;
+    }
+
+
+
+    </style>
+</head>
+<body>
+    <section>
+        <input type="text" id="equation" class="displaydiv">
+
+        <table>
+            <tr>
+                <td><input class="orangediv in" type="button" value="+"></td>
+                <td><input class="orangediv in" type="button" value="-"></td>
+                <td><input class="orangediv in" type="button" value="*"></td>
+                <td><input class="orangediv in" type="button" value="/"></td>
+            </tr>
+
+            <tr>
+                <td><input class="buttondiv in" type="button" value="1"></td>
+                <td><input class="buttondiv in" type="button" value="2"></td>
+                <td><input class="buttondiv in" type="button" value="3"></td>
+                <td><input class="buttondiv in" type="button" value="4"></td>
+            </tr>
+
+            <tr>
+                <td><input class="buttondiv in" type="button" value="5"></td>
+                <td><input class="buttondiv in" type="button" value="6"></td>
+                <td><input class="buttondiv in" type="button" value="7"></td>
+                <td><input class="buttondiv in" type="button" value="8"></td>
+            </tr>
+
+            <tr>
+                <td><input class="buttondiv in" type="button" value="9"></td>
+                <td><input class="buttondiv in" type="button" value="0"></td>
+                <td><input class="buttondiv in" type="button" value="%"></td>
+                <td rowspan="2"><input class="equaldiv" onclick="solve()" type="button" value="="></td>
+            </tr>
+
+            <tr>
+                <td><input class="buttondiv" onclick="clearone()" type="button" value="C"></td>
+                <td><input class="buttondiv" onclick="clearall()" type="button" value="AC"></td>
+                <td><input class="buttondiv in" type="button" value="."></td>
+            </tr>
+        </table>
+    </section>
+
+    <script>
+        let eq = document.getElementById("equation");
+        let inputs = document.querySelectorAll('input.in');
+        console.log(inputs.length);
+
+        inputs.forEach(x=>{
+            console.log(x);
+            x.addEventListener("click",()=>{
+                eq.value += x.value;
+            })
+        })
+
+        function clearall(){
+            eq.value = ""
+        }
+
+        function solve(){
+            eq.value = eval(eq.value);
+        }
+
+        function clearone(){
+            eq.value = eq.value.slice(0,eq.value.length-1);
+        }
+
+
+    </script>
+    
+</body>
+</html>
